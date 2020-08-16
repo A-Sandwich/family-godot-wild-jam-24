@@ -20,3 +20,14 @@ func _physics_process(delta):
 	velocity.y = move_and_slide(velocity, Vector2(0, -1)).y
 	if is_on_floor() and Input.is_action_pressed("jump"):
 		velocity.y = -JUMP_SPEED
+	update_animation(velocity)
+	
+func update_animation(velocity):
+	if velocity.x < 0 and not $AnimatedSprite.flip_h:
+		$AnimatedSprite.flip_h = true
+	elif velocity.x > 0 and $AnimatedSprite.flip_h:
+		$AnimatedSprite.flip_h = false
+	if velocity.x != 0 and velocity.y == 0:
+		$AnimatedSprite.play()
+	else:
+		$AnimatedSprite.stop()
