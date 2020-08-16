@@ -15,19 +15,27 @@ func _physics_process(delta):
 		velocity.x =  WALK_SPEED
 	else:
 		velocity.x = 0
-		
-	#move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP)
-	velocity.y = move_and_slide(velocity, Vector2(0, -1)).y
+	
+	var current_velocity = move_and_slide(velocity, Vector2.UP, true, 4, 1.22173)
+	var slides = get_slide_count()
+	if slides:
+		deal_with_slope(slides)
 	if is_on_floor() and Input.is_action_pressed("jump"):
 		velocity.y = -JUMP_SPEED
-	update_animation(velocity)
+	update_animation(current_velocity, slides)
+
+func deal_with_slope(number_of_slides):
+	for slide in range(number_of_slides):
+		var collision = get_slide_collision(slide)
+		if is_on_floor() and collision.normal.y < 1.0 and velocity.x != 0.0:
+			velocity.y = collision.normal.y
 	
-func update_animation(velocity):
+func update_animation(velocity, slides):
 	if velocity.x < 0 and not $AnimatedSprite.flip_h:
 		$AnimatedSprite.flip_h = true
 	elif velocity.x > 0 and $AnimatedSprite.flip_h:
 		$AnimatedSprite.flip_h = false
-	if velocity.x != 0 and velocity.y == 0:
+	if velocity.x != 0 and slides != 0:
 		$AnimatedSprite.play()
 	else:
 		$AnimatedSprite.stop()
