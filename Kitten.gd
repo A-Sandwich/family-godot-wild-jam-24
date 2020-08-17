@@ -7,6 +7,13 @@ var velocity = Vector2()
 
 var jump_time = 0.0
 
+signal kitten_location
+
+func _ready():
+	var player = get_parent().get_node("Player")
+	self.connect("kitten_location", player, "_on_kitten_location")
+	emit_signal("kitten_location", position)
+
 func _physics_process(delta):
 	velocity.y += delta  * GRAVITY
 	
@@ -21,7 +28,6 @@ func deal_with_slope(number_of_slides):
 	for slide in range(number_of_slides):
 		var collision = get_slide_collision(slide)
 		if collision.collider.name == "Player":
-			visible = false
 			pass
 		if is_on_floor() and collision.normal.y < 1.0 and velocity.x != 0.0:
 			velocity.y = collision.normal.y
@@ -30,3 +36,6 @@ func deal_with_slope(number_of_slides):
 func _on_Timer_timeout():
 	velocity.y = -JUMP_SPEED
 	$Timer.stop()
+
+func _on_kitten_held():
+	self.queue_free()
