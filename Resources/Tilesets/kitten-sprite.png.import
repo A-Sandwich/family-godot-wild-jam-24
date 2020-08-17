@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/emma-sprite.png-a0dba6c456774f8dd2f97e65bb118115.stex"
+path="res://.import/kitten-sprite.png-143a8d67cf7916e7e3707cda21cb67f9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Tilesets/emma-sprite.png"
-dest_files=[ "res://.import/emma-sprite.png-a0dba6c456774f8dd2f97e65bb118115.stex" ]
+source_file="res://Resources/Tilesets/kitten-sprite.png"
+dest_files=[ "res://.import/kitten-sprite.png-143a8d67cf7916e7e3707cda21cb67f9.stex" ]
 
 [params]
 

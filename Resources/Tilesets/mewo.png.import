@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/emma-sprite.png-a0dba6c456774f8dd2f97e65bb118115.stex"
+path="res://.import/mewo.png-88bf491311e43fcdfbf67bb4976abaf6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Tilesets/emma-sprite.png"
-dest_files=[ "res://.import/emma-sprite.png-a0dba6c456774f8dd2f97e65bb118115.stex" ]
+source_file="res://Resources/Tilesets/mewo.png"
+dest_files=[ "res://.import/mewo.png-88bf491311e43fcdfbf67bb4976abaf6.stex" ]
 
 [params]
 
