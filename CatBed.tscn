@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Resources/Tilesets/catbed.png" type="Texture" id=1]
+[ext_resource path="res://CatBed.gd" type="Script" id=2]
+
+[node name="CatBed" type="KinematicBody2D"]
+z_index = -1
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2( 2, 2 )
+polygon = PoolVector2Array( -36.8638, -18.8013, -23.6055, -18.8013, -23.6055, -16.8567, -17.5951, -16.68, -17.4183, -10.6695, -15.8274, -10.6695, -15.6506, -6.95724, -11.7615, -6.95724, -11.2312, -2.7146, 9.27494, -3.06815, 9.62849, -7.13401, 13.164, -7.13401, 13.5176, -11.5534, 15.2853, -11.5534, 15.2853, -16.68, 22.3564, -17.0335, 25.3616, -19.8619, 36.8521, -19.8619, 41.8018, -5.89658, 33.6701, 32.464, -34.0354, 32.2872, -41.2832, -0.946827, -40.0458, -15.089 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -0.353554 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
