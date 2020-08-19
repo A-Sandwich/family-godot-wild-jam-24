@@ -18,7 +18,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_left"):
 		velocity.x = -WALK_SPEED
 	elif Input.is_action_pressed("move_right"):
-		velocity.x =  WALK_SPEED
+		velocity.x = WALK_SPEED
 	else:
 		velocity.x = 0
 	
