@@ -6,6 +6,7 @@ const JUMP_SPEED = 600
 var velocity = Vector2()
 var jump_time = 0.0
 var kitten_location
+var KITTEN = preload("res://Kitten.tscn")
 
 signal pickup_kitten
 
@@ -52,10 +53,16 @@ func update_animation(velocity, slides):
 
 func _process(delta):
 	if Input.is_action_just_pressed("interact"):
-		print(position.distance_to(kitten_location))
-		if position.distance_to(kitten_location) < 150:
+		if position.distance_to(kitten_location) < 150 and !$HeldKitten.visible:
 			emit_signal("pickup_kitten")
 			$HeldKitten.visible = true
+		elif $HeldKitten.visible:
+			var kitten = KITTEN.instance()
+			var flipped = -1 if $AnimatedSprite.flip_h else 1
+			kitten.position = Vector2(position.x + (flipped * $CollisionShape2D.shape.radius), position.y)
+			get_parent().add_child(kitten)
+			self.connect("pickup_kitten", kitten, "_on_kitten_held")
+			$HeldKitten.visible = false
 
 func _on_kitten_location(location):
 	kitten_location = location

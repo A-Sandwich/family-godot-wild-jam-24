@@ -15,14 +15,15 @@ func _ready():
 	emit_signal("kitten_location", position)
 
 func _integrate_forces(state):
+	var lv = state.get_linear_velocity()
 	if Input.is_action_pressed("jump"):
 		$Timer.start()
 	if jump:
-		var lv = state.get_linear_velocity()
 		lv.y =  -500
 		state.set_linear_velocity(lv)
-		#state.add_force(position, Vector2(position.x, position.y -10))
 		jump = false
+	if lv.x > 0: #Probably inefficient but oh well
+		emit_signal("kitten_location", position)
 
 func _on_Timer_timeout():
 	jump = true

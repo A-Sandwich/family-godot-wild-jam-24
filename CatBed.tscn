@@ -1,11 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Resources/Tilesets/catbed.png" type="Texture" id=1]
-[ext_resource path="res://CatBed.gd" type="Script" id=2]
 
-[node name="CatBed" type="KinematicBody2D"]
+[node name="CatBed" type="RigidBody2D"]
 z_index = -1
-script = ExtResource( 2 )
+mode = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -76.1391, -40.2245, -48.7668, -40.6965, -45.9352, -35.0332, -35.0806, -35.0332, -28.4735, -15.6839, -22.3384, -15.6839, -21.3945, -7.66095, 18.2482, -7.66095, 18.7201, -15.6839, 25.3272, -16.1558, 29.1027, -33.6174, 45.1485, -35.5052, 47.5082, -41.1684, 72.0489, -41.1684, 81.4876, -30.7858, 84.3192, 2.24971, 67.8015, 64.0734, -65.2846, 64.0734, -83.2181, 0.361969 )
