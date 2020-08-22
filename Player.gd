@@ -7,6 +7,7 @@ var velocity = Vector2()
 var jump_time = 0.0
 var kitten_location
 var KITTEN = preload("res://Kitten.tscn")
+var time_falling = 0.0
 
 signal pickup_kitten
 signal retry
@@ -34,6 +35,12 @@ func _physics_process(delta):
 	if is_on_floor() and Input.is_action_pressed("jump"):
 		velocity.y = -JUMP_SPEED
 	update_animation(current_velocity, slides)
+	if is_on_floor():
+		time_falling = 0
+	else:
+		time_falling += delta
+	if time_falling > 3:
+		emit_signal("retry")
 
 func deal_with_slope(number_of_slides):
 	for slide in range(number_of_slides):
