@@ -54,7 +54,9 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 16, 16 )
 
-[node name="Kitten" type="KinematicBody2D"]
+[node name="Kitten" type="RigidBody2D"]
+mode = 2
+gravity_scale = 25.0
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

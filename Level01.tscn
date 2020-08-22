@@ -15,10 +15,11 @@ tile_data = PoolIntArray( -720871, 10, 0, -720870, 10, 0, -655335, 10, 0, -65533
 position = Vector2( 142.887, 304.882 )
 
 [node name="Kitten" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1146.59, 455.996 )
+position = Vector2( 586.492, 326.968 )
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( 75.0399, 422.086 )
 
 [node name="Doggo" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1147.39, 198.448 )
+mass = 10.2041
