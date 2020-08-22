@@ -21,4 +21,4 @@ position = Vector2( 1146.59, 455.996 )
 position = Vector2( 75.0399, 422.086 )
 
 [node name="Doggo" parent="." instance=ExtResource( 5 )]
-position = Vector2( 463.082, 308.882 )
+position = Vector2( 1147.39, 198.448 )

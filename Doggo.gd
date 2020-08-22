@@ -1,27 +1,26 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 const GRAVITY = 1800.0
 const JUMP_SPEED = 350
 var velocity = Vector2()
-var walk_speed = 500
+var walk_speed = 200
 var jump_time = 0.0
+var initial_position
+var MAX_DISTANCE = 200
+var thrust = Vector2(0, 250)
+var torque = 20000
 
-func _physics_process(delta):
-	var space_state = get_world_2d().direct_space_state
-	#var result_front = space_state.intersect_ray(Vector2(position.x + 64, position.y), Vector2(position.x + 64, position.y + 64), [self])
-	#var result_back = space_state.intersect_ray(Vector2(position.x + 64, position.y), Vector2(position.x -64, position.y + 64), [self])
-	#if !result_front or !result_back:
-	#	walk_speed = -walk_speed
-	
-	velocity.y += delta  * GRAVITY
-	#velocity.x = walk_speed
-	
-	move_and_slide(velocity, Vector2.UP, true, 4, 1.22173)
+func _ready():
+	initial_position = position
 
-func deal_with_slope(number_of_slides):
-	for slide in range(number_of_slides):
-		var collision = get_slide_collision(slide)
-		if collision.collider.name == "Player":
-			pass
-		if is_on_floor() and collision.normal.y < 1.0 and velocity.x != 0.0:
-			velocity.y = collision.normal.y
+func _integrate_forces(state):
+	if Input.is_action_pressed("ui_up"):
+		applied_force = thrust.rotated(rotation)
+	else:
+		applied_force = Vector2()
+	var rotation_dir = 0
+	if Input.is_action_pressed("ui_right"):
+		rotation_dir += 1
+	if Input.is_action_pressed("ui_left"):
+		rotation_dir -= 1
+	applied_torque = rotation_dir * torque
