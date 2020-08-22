@@ -72,6 +72,9 @@ animations = [ {
 } ]
 
 [node name="Doggo" type="RigidBody2D"]
+mode = 2
+contacts_reported = 1
+contact_monitor = true
 script = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -80,5 +83,6 @@ polygon = PoolVector2Array( -22.6058, -46.546, -15.5267, -46.782, -10.4534, -41.
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 16 )
-frame = 11
+frame = 10
 playing = true
+[connection signal="body_shape_entered" from="." to="." method="_on_Doggo_body_shape_entered"]

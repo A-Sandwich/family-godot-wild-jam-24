@@ -8,10 +8,12 @@ var jump = false
 var jump_time = 0.0
 
 signal kitten_location
+signal success
 
 func _ready():
 	var player = get_parent().get_node("Player")
 	self.connect("kitten_location", player, "_on_kitten_location")
+	self.connect("success", player, "_on_success")
 	emit_signal("kitten_location", position)
 
 func _integrate_forces(state):
@@ -34,4 +36,4 @@ func _on_kitten_held():
 
 func _on_Kitten_body_shape_entered(body_id, body, body_shape, local_shape):
 	if body.name == "CatBed":
-		print("win")
+		emit_signal("success")

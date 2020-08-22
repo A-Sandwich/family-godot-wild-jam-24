@@ -2,17 +2,21 @@ extends KinematicBody2D
 
 const GRAVITY = 1800.0
 const WALK_SPEED = 500
-const JUMP_SPEED = 600
+const JUMP_SPEED = 1000
 var velocity = Vector2()
 var jump_time = 0.0
 var kitten_location
 var KITTEN = preload("res://Kitten.tscn")
 
 signal pickup_kitten
+signal retry
+signal success
 
 func _ready():
 	var held_kitten = get_parent().get_node("Kitten")
 	self.connect("pickup_kitten", held_kitten, "_on_kitten_held")
+	self.connect("success", get_parent(), "_on_success")
+	self.connect("retry", get_parent(), "_on_retry")
 
 func _physics_process(delta):
 	velocity.y += delta  * GRAVITY
@@ -59,10 +63,15 @@ func _process(delta):
 		elif $HeldKitten.visible:
 			var kitten = KITTEN.instance()
 			var flipped = -1 if $AnimatedSprite.flip_h else 1
-			kitten.position = Vector2(position.x + (flipped * $CollisionShape2D.shape.radius), position.y)
+			kitten.position = Vector2(position.x + (flipped * $CollisionShape2D.shape.extents.x), position.y)
 			get_parent().add_child(kitten)
 			self.connect("pickup_kitten", kitten, "_on_kitten_held")
 			$HeldKitten.visible = false
 
 func _on_kitten_location(location):
 	kitten_location = location
+
+func _on_retry():
+	emit_signal("retry")
+func _on_success():
+	emit_signal("success")
