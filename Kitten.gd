@@ -31,3 +31,7 @@ func _on_Timer_timeout():
 
 func _on_kitten_held():
 	self.queue_free()
+
+func _on_Kitten_body_shape_entered(body_id, body, body_shape, local_shape):
+	if body.name == "CatBed":
+		print("win")

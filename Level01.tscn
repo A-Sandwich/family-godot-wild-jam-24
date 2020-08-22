@@ -17,7 +17,7 @@ position = Vector2( 142.887, 304.882 )
 [node name="Kitten" parent="." instance=ExtResource( 3 )]
 position = Vector2( 586.492, 326.968 )
 
-[node name="KinematicBody2D" parent="." instance=ExtResource( 4 )]
+[node name="CatBed" parent="." instance=ExtResource( 4 )]
 position = Vector2( 75.0399, 436.244 )
 
 [node name="Doggo" parent="." instance=ExtResource( 5 )]

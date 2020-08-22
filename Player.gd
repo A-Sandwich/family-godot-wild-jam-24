@@ -66,4 +66,3 @@ func _process(delta):
 
 func _on_kitten_location(location):
 	kitten_location = location
-	print("Kitten location: " + str(location))

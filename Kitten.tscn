@@ -57,6 +57,8 @@ extents = Vector2( 16, 16 )
 [node name="Kitten" type="RigidBody2D"]
 mode = 2
 gravity_scale = 25.0
+contacts_reported = 1
+contact_monitor = true
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -69,4 +71,5 @@ shape = SubResource( 12 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.75
+[connection signal="body_shape_entered" from="." to="." method="_on_Kitten_body_shape_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

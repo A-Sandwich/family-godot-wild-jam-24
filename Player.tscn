@@ -5,9 +5,8 @@
 [ext_resource path="res://Resources/Tilesets/emma-sprite-Sheet-Sheet.png" type="Texture" id=3]
 [ext_resource path="res://KittenHeld.tscn" type="PackedScene" id=4]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 30.0
-height = 3.0
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 23, 32 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
@@ -71,7 +70,7 @@ animations = [ {
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 13 )
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
