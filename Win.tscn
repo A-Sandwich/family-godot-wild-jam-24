@@ -7,6 +7,8 @@ font_path = "res://Resources/Fonts/Russo_One/RussoOne-Regular.ttf"
 
 [sub_resource type="DynamicFont" id=2]
 size = 40
+outline_size = 6
+outline_color = Color( 0, 0, 0, 1 )
 font_data = SubResource( 1 )
 
 [node name="WinState" type="CanvasLayer"]
@@ -17,6 +19,7 @@ script = ExtResource( 1 )
 margin_right = 1010.0
 margin_bottom = 602.0
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "Level Complete!
 Press \"Enter\" to proceed to the next level!"
 align = 1

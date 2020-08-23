@@ -3,9 +3,10 @@ extends CanvasLayer
 var next_level
 
 func _ready():
-	get_tree().paused = true
+	if get_parent().name != "FinalLevel":
+		get_tree().paused = true
 	if next_level == null:
-		next_level = "res://Level01.tscn"
+		next_level = "res://Level00.tscn"
 		$Label.text = "Level Complete!\nThanks for playing my entry into the Godot Wild Jam 24\nPress \"Enter\" to restart the game!"
 
 func _process(delta):

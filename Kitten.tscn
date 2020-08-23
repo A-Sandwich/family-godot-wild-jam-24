@@ -150,6 +150,7 @@ position = Vector2( 42.0872, -39.3233 )
 scale = Vector2( 0.862588, 0.862588 )
 z_index = -100
 frames = SubResource( 29 )
+frame = 2
 playing = true
 
 [node name="FallTimer" type="Timer" parent="."]
